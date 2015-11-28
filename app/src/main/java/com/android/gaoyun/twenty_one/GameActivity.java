@@ -1,5 +1,6 @@
 package com.android.gaoyun.twenty_one;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -43,11 +44,8 @@ public class GameActivity extends ActionBarActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 
     public void leftButtonClick(View view) {
@@ -118,6 +116,13 @@ public class GameActivity extends ActionBarActivity {
         headText.setText("Let's play!");
 
         twentyOne.newPart();
+
+    }
+
+    public void aboutClick(MenuItem item) {
+
+        Intent about = new Intent(GameActivity.this, AboutActivity.class);
+        startActivity(about);
 
     }
 }
